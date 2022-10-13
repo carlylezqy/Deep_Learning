@@ -1,0 +1,37 @@
+example hdf5 file structure
+```
+	+-- '/'
+	|   +-- dataset "dset"
+	|   |   +-- attribute "myAttr1"
+	|   |   +-- attribute "myAttr2"
+	|   |   
+	|   +-- dataset "dset"
+	|   |   +-- attribute "myAttr1"
+	|   |   +-- attribute "myAttr2"
+	|   |   
+```  
+
+
+
+
+h5py_example.hdf5 file structure
+```
+	+-- '/'
+	|   +--	group "bar1"
+	|   |   +-- group "car1"
+	|   |   |   +-- None
+	|   |   |   
+	|   |   +-- dataset "dset1"
+	|   |
+	|   +-- group "bar2"
+	|   |   +-- group "car2"
+	|   |   |   +-- None
+	|   |   |
+	|   |   +-- dataset "dset2"
+	|   |   
+	|   +-- dataset "dset"
+	|   |   +-- attribute "myAttr1"
+	|   |   +-- attribute "myAttr2"
+	|   |   
+	|   
+```

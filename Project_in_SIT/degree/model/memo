@@ -1,0 +1,38 @@
+        # self.model = smp.DeepLabV3Plus(
+        #     encoder_name='resnet101', 
+        #     encoder_depth=5, 
+        #     encoder_weights='imagenet', 
+        #     encoder_output_stride=16, 
+        #     decoder_channels=256, 
+        #     decoder_atrous_rates=(12, 24, 36), 
+        #     in_channels=3, 
+        #     classes=self.num_classes, 
+        #     activation=None, 
+        #     upsampling=4, 
+        #     aux_params=None
+        # )
+
+        # self.model = smp.Unet(
+        #     encoder_name="xception",        # choose encoder, e.g. mobilenet_v2 or efficientnet-b7
+        #     encoder_weights="imagenet",     # use `imagenet` pre-trained weights for encoder initialization
+        #     in_channels=3,                  # model input channels (1 for gray-scale images, 3 for RGB, etc.)
+        #     classes=self.num_classes,        # model output channels (number of classes in your dataset)
+        #     decoder_attention_type="scse",
+        # )
+        # self.model.decoder.center = ASPP(2048, [12, 24, 36], out_channels=2048)
+
+        #import sys
+        #sys.path.append('/home/akiyo/code/pytorch-deeplab-xception')
+        #from modeling.deeplab import DeepLab
+        #self.model = DeepLab(backbone='xception', output_stride=16)
+        #self.model = torch.hub.load('pytorch/vision:v0.10.0', 'deeplabv3_resnet101', pretrained=True)
+        #self.model = smp.DeepLabV3Plus(encoder_name="timm-xception", classes=self.num_classes)
+        #self.model = xception_unet.UNet(ipt_ch=3, n_classes=self.num_classes, pretrained=True)
+        #self.model = model_ap.AUNet_R16(colordim=3, n_classes=self.num_classes)
+        #self.model = model2.AttU_Net(img_ch=3, output_ch=self.num_classes)
+        #self.model = multiresunet.MultiResUnet(in_channels=3, out_channels=self.num_classes)
+        #self.model = model.UNet(ipt_ch=3, n_classes=self.num_classes)
+
+        #self.model = deeplab.modeling.__dict__["deeplabv3plus_resnet101"](num_classes=self.num_classes, output_stride=16)
+        PTH_PATH = "/home/akiyo/checkpoint/best_deeplabv3plus_resnet101_voc_os16.pth"
+        #self.model.load_state_dict(torch.load(PTH_PATH)['model_state'])
