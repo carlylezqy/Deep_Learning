@@ -88,8 +88,7 @@ if __name__ == '__main__':
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=100, shuffle=True, num_workers=4, pin_memory=True)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=100, shuffle=True, num_workers=4, pin_memory=True)
 
-    #model = models.vgg16_bn(pretrained=True).to(device)
-    model = models.inception_v3(aux_logits=False, pretrained=True).to(device)
+    model = models.inception_v3(aux_logits=False, init_weights=True).to(device)
     optimizer = optim.Adadelta(model.parameters(), lr=0.1)
     scheduler = StepLR(optimizer, step_size=1, gamma=0.1)
     criterion = torch.nn.CrossEntropyLoss().to(device)
