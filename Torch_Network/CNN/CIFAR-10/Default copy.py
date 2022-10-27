@@ -79,9 +79,6 @@ if __name__ == '__main__':
     else:
         device = torch.device('cpu')
 
-    #train_dataset = datatool_with_high_efficient.CIFAR_DATASET(train=True, transform=transform)
-    #test_dataset = datatool_with_high_efficient.CIFAR_DATASET(train=False, transform=transform)
-
     train_dataset = torchvision.datasets.CIFAR10(root='/home/akiyo/datasets', train=True, download=True, transform=transform)
     test_dataset = torchvision.datasets.CIFAR10(root='/home/akiyo/datasets', train=False, download=True, transform=transform)
 
