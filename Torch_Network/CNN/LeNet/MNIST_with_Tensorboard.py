@@ -20,8 +20,6 @@ def train(train_loader, model, device, optimizer, epoch, writer):
         loss.backward()
         optimizer.step()
 
-
-
         writer.add_scalars('train/epoch' + str(epoch), 
                             {'train_loss':loss.item(),
                              'train_accuracy':100. * batch_idx / len(train_loader)},
@@ -80,8 +78,8 @@ def main():
     else:
         device = torch.device('cpu')
 
-    dataset_part_1 = datasets.MNIST(u'C:\ANN\Dataset', train=True, download=True, transform=transform)
-    dataset_part_2 = datasets.MNIST(u'C:\ANN\Dataset', train=False, transform=transform)
+    dataset_part_1 = datasets.MNIST(u'/home/akiyo/nfs/dataset', train=True, download=True, transform=transform)
+    dataset_part_2 = datasets.MNIST(u'/home/akiyo/nfs/dataset', train=False, transform=transform)
 
     train_loader = torch.utils.data.DataLoader(dataset_part_1, batch_size=64, shuffle=True, num_workers=os.cpu_count())
     test_loader = torch.utils.data.DataLoader(dataset_part_2, batch_size=100, shuffle=True, num_workers=os.cpu_count())

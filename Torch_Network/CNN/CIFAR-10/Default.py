@@ -91,5 +91,5 @@ if __name__ == '__main__':
         test(test_loader, model, device, criterion)
         scheduler.step()
 
-    PATH = './cifar_net.pth'
-    torch.save(model.state_dict(), PATH)
+    # PATH = './cifar_net.pth'
+    # torch.save(model.state_dict(), PATH)

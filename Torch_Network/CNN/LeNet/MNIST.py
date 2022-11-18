@@ -58,8 +58,8 @@ def main():
     else:
         device = torch.device('cpu')
 
-    dataset_part_1 = datasets.MNIST(u'/home/akiyo/datasets', train=True, download=True, transform=transform)
-    dataset_part_2 = datasets.MNIST(u'/home/akiyo/datasets', train=False, transform=transform)
+    dataset_part_1 = datasets.MNIST(u'/home/akiyo/nfs/dataset', train=True, download=True, transform=transform)
+    dataset_part_2 = datasets.MNIST(u'/home/akiyo/nfs/dataset', train=False, transform=transform)
 
     train_loader = torch.utils.data.DataLoader(dataset_part_1, batch_size=64, shuffle=True, num_workers=os.cpu_count())
     test_loader = torch.utils.data.DataLoader(dataset_part_2, batch_size=100, shuffle=True, num_workers=os.cpu_count())
