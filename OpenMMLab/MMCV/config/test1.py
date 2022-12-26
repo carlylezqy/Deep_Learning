@@ -1,5 +1,2 @@
-a = 1
-b = dict(b1=[0, 1, 2], b2=None)
-c = (1, 2)
-d = 'string'
-e = {"b1": [0, 1, 2], "b2": None}
+dataset = "VOC2012"
+dl_link = "http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar"

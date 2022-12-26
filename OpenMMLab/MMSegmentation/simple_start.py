@@ -1,8 +1,11 @@
 from mmcv import Config
-from mmseg.utils import build_dp, get_root_logger
-from mmseg.models import build_segmentor
+
 from mmcv.runner import build_runner
+from mmseg.models import build_segmentor
+from mmcv.runner import HOOKS
 from mmseg.core import EvalHook
+from mmcv.utils import build_from_cfg
+from mmseg.utils import build_dp, get_root_logger
 from mmseg.datasets import build_dataloader, build_dataset
 from mmcv.cnn.utils import revert_sync_batchnorm
 
@@ -49,10 +52,17 @@ val_dataloader = build_dataloader(val_dataset, **val_loader_cfg)
 eval_cfg = cfg.get('evaluation', {})
 eval_cfg['by_epoch'] = cfg.runner['type'] != 'IterBasedRunner'
 
+hook_cfg = dict(type='TestHook', name='ZHANG')
+priority = hook_cfg.pop('priority', 'NORMAL')
+test_hook = build_from_cfg(hook_cfg, HOOKS)
+
 runner.register_hook(EvalHook(val_dataloader, **eval_cfg), priority='LOW')
-runner.register_hook()
+runner.register_hook(test_hook, priority=priority)
 
 dataset = [build_dataset(cfg.data.train)]
 train_loader_cfg = {**loader_cfg, **cfg.data.get('train_dataloader', {})}
 data_loaders = [build_dataloader(ds, **train_loader_cfg) for ds in dataset]
+
 runner.run(data_loaders, cfg.workflow)
+
+print(runner)

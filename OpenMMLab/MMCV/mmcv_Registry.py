@@ -5,6 +5,7 @@ from mmcv.utils import Registry
 """
 
 MODELS = Registry('models')
+print(type(MODELS))
 @MODELS.register_module()
 class Operations:
     def __init__(self):
