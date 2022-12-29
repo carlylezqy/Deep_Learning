@@ -1,12 +1,11 @@
 import torchvision
 from mmcv import Config, ConfigDict
 from mmcv.runner import build_optimizer, build_runner
+from mmcv.utils.logging import get_logger
 
 # Image Classification
 from mmcls.models import build_classifier
 from mmcls.datasets import build_dataloader
-
-from mmcv.utils.logging import get_logger
 
 img_norm_cfg = dict(
     mean=[125.307, 122.961, 113.8575],
