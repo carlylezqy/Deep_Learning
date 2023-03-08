@@ -1,34 +1,59 @@
 # Almost copied from the Official Example
 # https://mmengine.readthedocs.io/en/latest/tutorials/runner.html#best-practice-of-the-runner-config-files
 
-model = dict(type='MyAwesomeModel', layers=2, activation='relu')
-work_dir = '/home/akiyo/sandbox/work_dirs/qs_from_cfg'
+# _base_ = [
+#     #'mmcls::_base_/datasets/cifar10_bs16.py', 
+#     'mmcls::_base_/models/resnet50.py'
+# ]
 
-train_dataloader = dict(
-    dataset=dict(type='MyDataset', is_train=True, size=10000),
-    sampler=dict(type='DefaultSampler', shuffle=True),
-    collate_fn=dict(type='default_collate'),
-    batch_size=64, pin_memory=True, num_workers=2)
+_base_ = [
+    '/home/akiyo/nfs/zhang/library/mmclassification/configs/_base_/datasets/cifar10_bs16.py',
+    '/home/akiyo/nfs/zhang/library/mmclassification/configs/_base_/models/resnet50.py'
+]
 
-val_dataloader = dict(
-    dataset=dict(type='MyDataset', is_train=False, size=1000),
-    sampler=dict(type='DefaultSampler', shuffle=False),
-    collate_fn=dict(type='default_collate'),
-    batch_size=1000, pin_memory=True, num_workers=2)
 
-train_cfg = dict(by_epoch=True, max_epochs=10, val_begin=2, val_interval=1)
-val_cfg = dict()
+model = {{_base_.model}}
+# custom_imports = dict(
+#     imports=[
+#         'metric.accurary'
+#     ], 
+#     allow_failed_imports=False
+# )
 
-optim_wrapper = dict(optimizer=dict(type='Adam', lr=0.001))
-param_scheduler = dict(type='MultiStepLR', by_epoch=True, milestones=[4, 8], gamma=0.1)
 
-train_evaluator = dict(type='Accuracy')
-val_evaluator = dict(type='Accuracy')
 
-default_hooks = dict(checkpoint=dict(type='CheckpointHook', interval=1))
 
-launcher = 'none'
-env_cfg = dict(cudnn_benchmark=False, backend='nccl', mp_cfg=dict(mp_start_method='fork'))
-log_level = 'INFO'
-load_from = None
-resume = False
+# work_dir = '/home/akiyo/sandbox/ResNetConfigTrain'
+
+# data = dict(
+#     samples_per_gpu=64,
+#     workers_per_gpu=2,
+#     train_dataloader = dict(
+#         samples_per_gpu=64,
+#         workers_per_gpu=2,
+#         pin_memory=True),
+#     val_dataloader = dict(
+#         samples_per_gpu=64,
+#         workers_per_gpu=2,
+#         pin_memory=True)
+# )
+
+# device='cuda'
+
+# train_cfg = dict(by_epoch=True, max_epochs=10, val_begin=2, val_interval=1)
+# val_cfg = dict()
+
+# optim_wrapper = dict(optimizer=dict(type='Adam', lr=0.001))
+# param_scheduler = dict(type='MultiStepLR', by_epoch=True, milestones=[4, 8], gamma=0.1)
+
+# val_evaluator = dict(type='Accuracy')
+
+# default_hooks = dict(checkpoint=dict(type='CheckpointHook', interval=1))
+
+# launcher = 'none'
+# #env_cfg = dict(cudnn_benchmark=False, backend='nccl', mp_cfg=dict(mp_start_method='fork'))
+# log_level = 'INFO'
+# load_from = None
+# resume = False
+
+# dist_params = dict(backend='nccl')

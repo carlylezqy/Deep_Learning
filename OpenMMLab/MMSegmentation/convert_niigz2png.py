@@ -40,6 +40,7 @@ def task(task_name):
         "Task01_BrainTumour": 1000,
         "Task02_Heart": 100,
         "Task03_Liver": 1000,
+        "Task04_Hippocampus": 100,
         "Task05_Prostate": 0,
         "Task06_Lung": 0,
     }
