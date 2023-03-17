@@ -4,7 +4,7 @@ from mmengine.runner import Runner
 from mmcls.models import build_classifier
         
 if __name__ == '__main__':
-    cfg_path = "config/config2.py"
+    cfg_path = "config/resnet50_cifar10.py"
     config = Config.fromfile(cfg_path)
     work_dir='/home/akiyo/sandbox/ResNetConfigTrain'
     

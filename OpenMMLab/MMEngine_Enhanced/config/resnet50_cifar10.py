@@ -1,8 +1,3 @@
-_base_ = [
-    'mmcls::_base_/models/resnest50.py',
-    'mmcls::_base_/datasets/cifar10_bs16.py',
-]
-
 custom_imports = dict(
     imports=[
         'mmcls.utils.setup_env',
@@ -10,6 +5,13 @@ custom_imports = dict(
     ], 
     allow_failed_imports=False
 )
+
+_base_ = [
+    'mmcls::_base_/models/resnest50.py',
+    'mmcls::_base_/datasets/cifar10_bs16.py',
+]
+
+
 
 model = _base_.model
 num_classes = 10
